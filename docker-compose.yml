@@ -1,0 +1,28 @@
+services:
+  homepage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: homepage
+    restart: unless-stopped
+
+    # If not using Traefik, uncomment to expose directly:
+    # ports:
+    #   - "3000:80"
+
+    # Add your Traefik labels here, e.g.:
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.homepage.rule=Host(`tvdermeer.nl`)"
+    #   - "traefik.http.routers.homepage.entrypoints=websecure"
+    #   - "traefik.http.routers.homepage.tls.certresolver=letsencrypt"
+    #   - "traefik.http.services.homepage.loadbalancer.server.port=80"
+
+    # If using Traefik, connect to its network:
+    # networks:
+    #   - traefik
+
+# If using a Traefik network, uncomment:
+# networks:
+#   traefik:
+#     external: true
