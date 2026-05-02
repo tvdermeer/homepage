@@ -9,6 +9,7 @@ describe("PostCard", () => {
     date: "2026-01-15",
     slug: "test-post",
     tags: ["AI", "Golf"],
+    readingTime: 5,
   };
 
   it("renders title", () => {
@@ -26,10 +27,28 @@ describe("PostCard", () => {
     expect(screen.getByText("January 15, 2026")).toBeInTheDocument();
   });
 
-  it("renders tags as spans when provided", () => {
+  it("renders reading time", () => {
+    render(<PostCard {...defaultProps} />);
+    expect(screen.getByText("5 min read")).toBeInTheDocument();
+  });
+
+  it("does not render reading time when omitted", () => {
+    render(<PostCard {...defaultProps} readingTime={undefined} />);
+    expect(screen.queryByText(/min read/)).not.toBeInTheDocument();
+  });
+
+  it("renders tags as links when provided", () => {
     render(<PostCard {...defaultProps} />);
     expect(screen.getByText("AI")).toBeInTheDocument();
     expect(screen.getByText("Golf")).toBeInTheDocument();
+  });
+
+  it("tag links point to filtered blog view", () => {
+    render(<PostCard {...defaultProps} />);
+    const aiLink = screen.getByRole("link", { name: "AI" });
+    expect(aiLink).toHaveAttribute("href", "/blog?tag=AI");
+    const golfLink = screen.getByRole("link", { name: "Golf" });
+    expect(golfLink).toHaveAttribute("href", "/blog?tag=Golf");
   });
 
   it("title links to /blog/{slug}", () => {

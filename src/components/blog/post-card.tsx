@@ -7,10 +7,11 @@ interface PostCardProps {
   date: string;
   slug: string;
   tags: string[];
+  readingTime?: number;
   className?: string;
 }
 
-export function PostCard({ title, description, date, slug, tags, className }: PostCardProps) {
+export function PostCard({ title, description, date, slug, tags, readingTime, className }: PostCardProps) {
   const formattedDate = new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -27,17 +28,24 @@ export function PostCard({ title, description, date, slug, tags, className }: Po
       <div className="flex flex-col gap-3">
         <div className="flex items-center gap-3 text-sm text-[#8FA89A]">
           <time dateTime={date}>{formattedDate}</time>
+          {typeof readingTime === "number" && (
+            <>
+              <span className="text-[#5F8C6B]/30">·</span>
+              <span>{readingTime} min read</span>
+            </>
+          )}
           {tags.length > 0 && (
             <>
               <span className="text-[#5F8C6B]/30">·</span>
               <div className="flex gap-2">
                 {tags.map((tag) => (
-                  <span
+                  <Link
                     key={tag}
-                    className="rounded-full bg-[#1E2D24] px-2 py-0.5 text-xs font-medium text-[#8FA89A]"
+                    href={`/blog?tag=${encodeURIComponent(tag)}`}
+                    className="relative z-10 rounded-full bg-[#1E2D24] px-2 py-0.5 text-xs font-medium text-[#8FA89A] hover:text-[#E8F0E9] transition-colors"
                   >
                     {tag}
-                  </span>
+                  </Link>
                 ))}
               </div>
             </>

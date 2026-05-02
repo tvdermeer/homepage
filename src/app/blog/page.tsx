@@ -1,5 +1,35 @@
+import { Suspense } from "react";
 import { posts } from "#site/content";
 import { PostCard } from "@/components/blog/post-card";
+import { BlogPostList } from "./blog-post-list";
+
+function BlogPostListFallback({
+  posts: fallbackPosts,
+}: {
+  posts: typeof posts;
+}) {
+  return (
+    <div className="grid gap-6 md:grid-cols-2">
+      {fallbackPosts.map((post, index) => (
+        <div
+          key={post.slug}
+          className={index === 0 ? "md:col-span-2" : ""}
+          style={{ animationDelay: `${index * 100}ms` }}
+        >
+          <PostCard
+            title={post.title}
+            description={post.description}
+            date={post.date}
+            slug={post.slug}
+            tags={post.tags}
+            readingTime={post.metadata?.readingTime}
+            className="animate-fade-in-up opacity-0"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function BlogPage() {
   const publishedPosts = posts
@@ -18,24 +48,11 @@ export default function BlogPage() {
       </div>
 
       {publishedPosts.length > 0 ? (
-        <div className="grid gap-6 md:grid-cols-2">
-          {publishedPosts.map((post, index) => (
-            <div
-              key={post.slug}
-              className={index === 0 ? "md:col-span-2" : ""}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <PostCard
-                title={post.title}
-                description={post.description}
-                date={post.date}
-                slug={post.slug}
-                tags={post.tags}
-                className="animate-fade-in-up opacity-0"
-              />
-            </div>
-          ))}
-        </div>
+        <Suspense
+          fallback={<BlogPostListFallback posts={publishedPosts} />}
+        >
+          <BlogPostList posts={publishedPosts} />
+        </Suspense>
       ) : (
         <div className="rounded-xl border border-[#5F8C6B]/15 bg-[#152119]/50 p-12 text-center">
           <p className="text-[#8FA89A]">No posts yet. Check back soon!</p>
