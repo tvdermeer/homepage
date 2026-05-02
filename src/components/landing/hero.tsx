@@ -4,14 +4,14 @@ import Link from "next/link";
 export function Hero() {
   return (
     <section className="relative flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-4 text-center">
-      <div className="absolute inset-0 bg-gradient-to-br from-emerald-950/40 via-slate-950 to-violet-950/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-emerald-500/5 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0D1610] via-[#0D1610] to-[#152119]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#5F8C6B]/8 via-transparent to-transparent" />
 
       <div className="relative z-10 max-w-3xl">
         <h1 className="mb-6 text-5xl font-extrabold tracking-tight text-white sm:text-7xl">
           {siteConfig.name}
         </h1>
-        <p className="mb-4 text-xl font-medium text-emerald-400 sm:text-2xl">
+        <p className="mb-4 text-xl font-medium text-[#5F8C6B] sm:text-2xl">
           AI Engineer & Golf Enthusiast
         </p>
         <p className="mx-auto mb-10 max-w-xl text-lg text-slate-400">
@@ -22,7 +22,7 @@ export function Hero() {
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
           <Link
             href="/blog"
-            className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-500 transition-colors"
+            className="inline-flex items-center justify-center rounded-lg bg-[#5F8C6B] px-6 py-3 text-sm font-semibold text-white hover:bg-[#4a7a57] transition-colors"
           >
             Read the Blog
           </Link>
