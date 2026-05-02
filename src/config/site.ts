@@ -6,7 +6,7 @@ export const siteConfig = {
   url: "https://tvdermeer.nl",
   author: "Thomas van der Meer",
   links: {
-    linkedin: "http://linkedin.com/tvdermeer",
+    linkedin: "https://www.linkedin.com/in/tvdermeer/",
     github: "https://github.com/tvdermeer",
   },
   nav: [
