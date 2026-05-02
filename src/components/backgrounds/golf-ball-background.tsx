@@ -27,7 +27,7 @@ const particlesConfig: ISourceOptions = {
     },
   },
   particles: {
-    color: { value: "#ffffff" },
+    color: { value: "#8EBEA8" },
     links: { enable: false },
     move: {
       direction: "none",
@@ -42,7 +42,7 @@ const particlesConfig: ISourceOptions = {
       value: 35,
     },
     opacity: {
-      value: { min: 0.6, max: 0.9 },
+      value: { min: 0.4, max: 0.7 },
     },
     shape: {
       type: "image",
