@@ -91,29 +91,29 @@ export function ReadingProgress() {
   if (!isVisible) return null;
 
   const ballRotation = progress * 360 * 2;
-  const ballLeft = `calc(${progress * 100}% - ${progress * 12}px)`;
+  const ballLeft = `calc(${progress * 100}% - ${progress * 16}px)`;
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 h-4"
+      className="fixed top-16 left-0 right-0 z-50 h-6"
       aria-hidden="true"
       role="progressbar"
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={Math.round(progress * 100)}
     >
-      <div className="absolute inset-x-0 top-1/2 h-1 -translate-y-1/2 bg-[#152119] border-y border-[#5F8C6B]/20" />
+      <div className="absolute inset-x-0 top-1/2 h-1.5 -translate-y-1/2 bg-[#152119] border-y border-[#5F8C6B]/20" />
 
       {prefersReducedMotion && (
         <div
-          className="absolute left-0 top-1/2 h-1 -translate-y-1/2 bg-[#5F8C6B]"
+          className="absolute left-0 top-1/2 h-1.5 -translate-y-1/2 bg-[#5F8C6B]"
           style={{ width: `${progress * 100}%` }}
         />
       )}
 
       {!prefersReducedMotion && (
         <div
-          className="absolute top-1/2 h-3 w-3 -translate-y-1/2 rounded-full bg-[#E8F0E9] shadow-md"
+          className="absolute top-1/2 h-4 w-4 -translate-y-1/2 rounded-full bg-[#E8F0E9] shadow-md"
           style={{
             left: ballLeft,
             transform: `translateY(-50%) rotate(${ballRotation}deg)`,
@@ -132,7 +132,7 @@ export function ReadingProgress() {
       )}
 
       <div className="absolute right-2 top-1/2 -translate-y-1/2">
-        <FlagIcon className="h-3 w-3 text-[#5F8C6B]" />
+        <FlagIcon className="h-4 w-4 text-[#5F8C6B]" />
       </div>
     </div>
   );
