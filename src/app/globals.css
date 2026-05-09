@@ -114,3 +114,37 @@ body {
 .animate-fade-in-up {
   animation: fade-in-up 0.5s ease-out forwards;
 }
+
+@media print {
+  body {
+    background: #0D1610 !important;
+    color: #E8F0E9 !important;
+  }
+
+  header,
+  footer,
+  nav,
+  #tsparticles,
+  .golf-ball-background {
+    display: none !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  #cv-content {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  a {
+    color: #5F8C6B !important;
+    text-decoration: none !important;
+  }
+
+  .rounded-lg,
+  .border {
+    border-color: rgba(95, 140, 107, 0.15) !important;
+  }
+}

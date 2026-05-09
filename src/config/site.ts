@@ -13,5 +13,7 @@ export const siteConfig = {
     { label: "Home", href: "/" },
     { label: "Blog", href: "/blog" },
     { label: "CV", href: "/cv" },
+    { label: "Contact", href: "/contact" },
   ],
+  formspreeId: "YOUR_FORMSPREE_ID",
 };

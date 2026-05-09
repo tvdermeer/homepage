@@ -42,4 +42,22 @@ describe("cv-page", () => {
     expect(linkedInLink).toHaveAttribute("href", "https://www.linkedin.com/in/tvdermeer/");
     expect(githubLink).toHaveAttribute("href", "https://github.com/tvdermeer");
   });
+
+  it("renders download CV as PDF button", () => {
+    render(<CVPage />);
+    expect(
+      screen.getByRole("button", { name: /download cv as pdf/i })
+    ).toBeInTheDocument();
+  });
+
+  it("does not expose personal email on the page", () => {
+    render(<CVPage />);
+    const body = document.body.textContent || "";
+    expect(body).not.toContain("@");
+  });
+
+  it("renders phone number", () => {
+    render(<CVPage />);
+    expect(screen.getByText(/\+31 6 20728126/)).toBeInTheDocument();
+  });
 });

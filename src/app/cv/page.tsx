@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { CVPdfDownloadButton } from "@/components/cv/cv-pdf-download-button";
 
 const experiences = [
   {
@@ -116,19 +117,20 @@ const skills = [
 export default function CVPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6">
-      <header className="mb-12 border-b border-[#5F8C6B]/15 pb-12">
-        <h1 className="text-4xl font-bold tracking-tight text-[#E8F0E9]">Thomas van der Meer</h1>
-        <p className="mt-2 text-lg text-[#5F8C6B]">
-          Senior Gen AI Engineer | ML Governance & Evaluation Specialist
-        </p>
-        <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#8FA89A]">
-          <span>Amersfoort, Netherlands</span>
-          <a href="mailto:Tvdermeer@gmail.com" className="hover:text-[#5F8C6B] transition-colors">
-            Tvdermeer@gmail.com
-          </a>
-          <span>+31 6 20728126</span>
-        </div>
-        <div className="mt-4 flex flex-wrap gap-4">
+      <div className="mb-8 flex justify-end">
+        <CVPdfDownloadButton />
+      </div>
+      <div id="cv-content">
+        <header className="mb-12 border-b border-[#5F8C6B]/15 pb-12">
+          <h1 className="text-4xl font-bold tracking-tight text-[#E8F0E9]">Thomas van der Meer</h1>
+          <p className="mt-2 text-lg text-[#5F8C6B]">
+            Senior Gen AI Engineer | ML Governance & Evaluation Specialist
+          </p>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#8FA89A]">
+            <span>Amersfoort, Netherlands</span>
+            <span>+31 6 20728126</span>
+          </div>
+          <div className="mt-4 flex flex-wrap gap-4">
           <a
             href={siteConfig.links.linkedin}
             target="_blank"
@@ -224,6 +226,7 @@ export default function CVPage() {
           ))}
         </div>
       </section>
+      </div>
     </div>
   );
 }

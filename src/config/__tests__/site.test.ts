@@ -30,6 +30,7 @@ describe("siteConfig", () => {
     expect(navItems).toContainEqual({ label: "Home", href: "/" });
     expect(navItems).toContainEqual({ label: "Blog", href: "/blog" });
     expect(navItems).toContainEqual({ label: "CV", href: "/cv" });
+    expect(navItems).toContainEqual({ label: "Contact", href: "/contact" });
   });
 
   it("title contains the author name", () => {
