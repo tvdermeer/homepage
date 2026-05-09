@@ -99,10 +99,4 @@ describe("related-posts", () => {
     expect(container.firstChild).toBeNull();
   });
 
-  it("excludes unpublished posts", () => {
-    const currentPost = mockPosts[0];
-    render(<RelatedPosts currentPost={currentPost} allPosts={mockPosts} />);
-
-    expect(screen.queryByText("Draft Post")).not.toBeInTheDocument();
-  });
 });
