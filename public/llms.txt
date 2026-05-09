@@ -1,0 +1,23 @@
+# Thomas van der Meer
+
+> Personal homepage and blog of Thomas van der Meer — writing about AI, NLP, data science, and golf.
+
+## Pages
+
+- [Homepage](https://tvdermeer.nl/): About me, my work in AI/ML, and passions.
+- [CV / Resume](https://tvdermeer.nl/cv): Professional experience, education, and skills.
+- [Blog](https://tvdermeer.nl/blog): All posts on AI, NLP, data science, and software engineering.
+
+## Blog Posts
+
+- [From Copilot to Autonomous: Stop Babysitting Your Agents](https://tvdermeer.nl/blog/stop-babysitting-your-agents): Why coding agents haven't shrunk your backlog yet, and how to redesign the workflow around them to move from supervised chat to autonomous, reviewable processes.
+- [Closing the Loop: Automating Cloud Observability with AI Agents](https://tvdermeer.nl/blog/closing-the-loop): How I built a multi-agent system to automatically remediate Azure policy violations using AI agents, going from detection to ready-to-merge pull requests.
+- [GenAI in the Enterprise: Lessons from Regulated Industries](https://tvdermeer.nl/blog/lessons-from-the-enterprise): Practical advice for developing and scaling GenAI applications in highly regulated sectors like financial services and government.
+- [Embracing Generative AI: A Data Scientist's Perspective](https://tvdermeer.nl/blog/lessons-from-data-science): How introducing generative AI models differs from traditional software, why evaluation is crucial, and concrete steps to control your Gen AI applications.
+- [NLP and Knowledge: An Unrequited Love](https://tvdermeer.nl/blog/knowledge-nlp): Exploring how knowledge is acquired in Large Language Models, from training to retrieval augmented generation.
+- [Power to the Transformers: How Hugging Face Democratizes Language Models](https://tvdermeer.nl/blog/power-to-transformers): A gentle introduction to using Hugging Face tools to load, train, test and deploy transformer models for NLP applications.
+
+## Optional
+
+- [LinkedIn](https://www.linkedin.com/in/tvdermeer/)
+- [GitHub](https://github.com/tvdermeer)

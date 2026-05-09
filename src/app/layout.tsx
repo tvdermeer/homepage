@@ -16,6 +16,16 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${siteConfig.url}/#person`,
+  name: siteConfig.author,
+  url: siteConfig.url,
+  jobTitle: "AI Engineer & Data Scientist",
+  sameAs: [siteConfig.links.linkedin, siteConfig.links.github],
+};
+
 export const metadata: Metadata = {
   title: {
     default: siteConfig.title,
@@ -53,6 +63,10 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0D1610] text-[#E8F0E9]">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <GolfBallBackground />
         <Header />
         <main className="flex-1">{children}</main>
