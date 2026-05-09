@@ -47,7 +47,7 @@ describe("blog-post-page", () => {
   it("renders post tags", async () => {
     const jsx = await BlogPostPage({ params: Promise.resolve({ slug: "test-post-one" }) });
     render(jsx);
-    expect(screen.getByText("ai")).toBeInTheDocument();
+    expect(screen.getAllByText("ai").length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText("golf")).toBeInTheDocument();
   });
 

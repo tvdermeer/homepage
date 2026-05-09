@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { posts } from "#site/content";
 import { ReadingProgress } from "@/components/blog/reading-progress";
 import { BackToTop } from "@/components/blog/back-to-top";
+import { RelatedPosts } from "@/components/blog/related-posts";
 import { siteConfig } from "@/config/site";
 
 interface BlogPostPageProps {
@@ -111,6 +112,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <div
           className="prose prose-invert max-w-none"
           dangerouslySetInnerHTML={{ __html: post.content }}
+        />
+
+        <RelatedPosts
+          currentPost={post}
+          allPosts={posts.filter((p) => p.published)}
         />
       </article>
     </>

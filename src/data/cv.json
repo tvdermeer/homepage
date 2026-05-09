@@ -1,0 +1,111 @@
+{
+  "experiences": [
+    {
+      "company": "Sogeti",
+      "role": "Senior Artificial Intelligence Specialist",
+      "period": "2020 – Present",
+      "bullets": [
+        "Subject Matter Expert on Generative AI, providing technical leadership and guidance across the organization.",
+        "Thought leadership and technical solutions for Agentic workflows with built-in governance and observability.",
+        "Architected GenAI/RAG solutions (€50k–€300k), overseeing technical design, delivery, and governance.",
+        "Led pre-sales efforts, created proposals, and mentored the next generation of Gen AI engineers.",
+        "Designed, built and managed internal Azure AI platform and GCP VM instances for client applications and L&D."
+      ]
+    },
+    {
+      "company": "Rabobank (through Sogeti)",
+      "role": "Agentic AI Engineer",
+      "period": "Oct – Dec 2025",
+      "bullets": [
+        "Applied technology lead for an offshore team building distributed agentic backend systems.",
+        "Designed and implemented a Kafka event bus for distributed configuration management.",
+        "Built scalable backend services using FastAPI and PostgreSQL."
+      ]
+    },
+    {
+      "company": "Gemeente Amsterdam (through Sogeti)",
+      "role": "Gen AI Engineer & Technical Governance Lead",
+      "period": "Mar – Jul 2025",
+      "bullets": [
+        "Designed and built end-to-end observability and evaluation setup (Ragas) to monitor AI-specific risks for a RAG chatbot serving 350 users.",
+        "Served as Technical Governance Lead: implemented control frameworks for municipal data compliance, privacy, and security.",
+        "Deployed applications using Bicep/Azure Pipelines; managed infrastructure as code (IaC)."
+      ]
+    },
+    {
+      "company": "ABN Amro (through Sogeti)",
+      "role": "Gen AI Engineer",
+      "period": "2023 – 2025",
+      "bullets": [
+        "Built a company-wide reusable production RAG system, establishing evaluation standards via MLflow.",
+        "Organised AI compliancy roundtables; defined actionable AI standards and anti-patterns for use cases across the enterprise.",
+        "Designed and implemented enterprise platform capabilities for Gen AI; Azure platform engineering for cognitive and traditional ML."
+      ]
+    },
+    {
+      "company": "Hogeschool Utrecht (through Sogeti)",
+      "role": "Lecturer Machine Learning",
+      "period": "2022 – 2024",
+      "bullets": [
+        "Taught two semesters on ML and Visualization; created curriculum for approachable and responsible ML."
+      ]
+    },
+    {
+      "company": "Justis (through Sogeti)",
+      "role": "Data Scientist",
+      "period": "2022 – 2023",
+      "bullets": [
+        "Data analysis across departments; initiator of innovative LLM/RAG and sustainability tracks."
+      ]
+    },
+    {
+      "company": "Reclassering Nederland (through Sogeti)",
+      "role": "Data Scientist",
+      "period": "Jan – Sep 2022",
+      "bullets": [
+        "Built NLP pipelines in SpaCy/Python processing millions of case documents — reducing runtime from 2 weeks to 2 days.",
+        "Developed explainable document analysis tools and Streamlit visualisations for language model owners."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Utrecht University",
+      "degree": "MSc Business Informatics",
+      "details": "Master thesis: adolescent interests analysis using BERT-like transformer language models",
+      "year": "2019 – 2020"
+    },
+    {
+      "institution": "Utrecht University",
+      "degree": "BSc Informatiekunde (Information Science)",
+      "details": "Entrepreneurship minor",
+      "year": "2014 – 2018"
+    }
+  ],
+  "skills": [
+    {
+      "category": "Certificates",
+      "items": ["Databricks Generative AI Engineer Associate", "Azure AI Engineer (AI-102)"]
+    },
+    {
+      "category": "GenAI & Evaluation",
+      "items": ["Ragas", "MLflow", "LangGraph", "Azure AI SDK", "Hugging Face", "PyTorch", "SpaCy", "OpenAI"]
+    },
+    {
+      "category": "AI Governance",
+      "items": ["Guardrails implementation", "AI observability", "Automated compliance", "Control frameworks"]
+    },
+    {
+      "category": "Cloud & DevOps",
+      "items": ["Azure", "GCP", "Terraform", "Bicep", "Docker", "Azure Pipelines", "GitHub Actions"]
+    },
+    {
+      "category": "Engineering",
+      "items": ["Python", "FastAPI", "PostgreSQL", "Bash"]
+    },
+    {
+      "category": "Languages",
+      "items": ["Dutch (Native)", "English (Fluent)"]
+    }
+  ]
+}
