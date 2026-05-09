@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { posts } from "#site/content";
 import { ReadingProgress } from "@/components/blog/reading-progress";
+import { BackToTop } from "@/components/blog/back-to-top";
 import { siteConfig } from "@/config/site";
 
 interface BlogPostPageProps {
@@ -64,6 +65,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       />
       <article id="blog-post-article" className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
         <ReadingProgress />
+        <BackToTop />
         <Link
           href="/blog"
           className="mb-8 inline-flex items-center text-sm font-medium text-[#8FA89A] hover:text-[#5F8C6B] transition-colors"

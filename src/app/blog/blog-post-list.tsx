@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useState } from "react";
 import { PostCard } from "@/components/blog/post-card";
 import { cn } from "@/lib/utils";
 
@@ -25,13 +25,29 @@ export function BlogPostList({ posts }: BlogPostListProps) {
   const pathname = usePathname();
 
   const activeTag = searchParams.get("tag") ?? "";
+  const [searchQuery, setSearchQuery] = useState("");
 
   const filteredPosts = useMemo(() => {
-    if (!activeTag) return posts;
-    return posts.filter((post) =>
-      post.tags.some((tag) => tag.toLowerCase() === activeTag.toLowerCase())
-    );
-  }, [posts, activeTag]);
+    let result = posts;
+
+    if (activeTag) {
+      result = result.filter((post) =>
+        post.tags.some((tag) => tag.toLowerCase() === activeTag.toLowerCase())
+      );
+    }
+
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      result = result.filter(
+        (post) =>
+          post.title.toLowerCase().includes(query) ||
+          post.description.toLowerCase().includes(query) ||
+          post.tags.some((tag) => tag.toLowerCase().includes(query))
+      );
+    }
+
+    return result;
+  }, [posts, activeTag, searchQuery]);
 
   const setTag = useCallback(
     (tag: string) => {
@@ -52,8 +68,46 @@ export function BlogPostList({ posts }: BlogPostListProps) {
     return Array.from(tagSet).sort();
   }, [posts]);
 
+  const hasActiveFilters = activeTag || searchQuery.trim();
+
   return (
     <>
+      <div className="mb-8">
+        <div className="relative">
+          <svg
+            className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#8FA89A]"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            />
+          </svg>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search posts..."
+            className="w-full rounded-lg border border-[#5F8C6B]/15 bg-[#152119] py-2.5 pl-10 pr-4 text-sm text-[#E8F0E9] placeholder-[#8FA89A]/50 focus:border-[#5F8C6B] focus:outline-none focus:ring-1 focus:ring-[#5F8C6B] transition-colors"
+          />
+          {searchQuery && (
+            <button
+              onClick={() => setSearchQuery("")}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8FA89A] hover:text-[#E8F0E9] transition-colors"
+              aria-label="Clear search"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          )}
+        </div>
+      </div>
+
       {allTags.length > 0 && (
         <div className="mb-8 flex flex-wrap items-center gap-2">
           {allTags.map((tag) => (
@@ -74,12 +128,15 @@ export function BlogPostList({ posts }: BlogPostListProps) {
               {tag}
             </button>
           ))}
-          {activeTag && (
+          {hasActiveFilters && (
             <button
-              onClick={() => setTag("")}
+              onClick={() => {
+                setTag("");
+                setSearchQuery("");
+              }}
               className="ml-2 text-xs font-medium text-[#8FA89A] hover:text-[#5F8C6B] transition-colors cursor-pointer"
             >
-              Clear filter
+              Clear all
             </button>
           )}
         </div>
@@ -108,13 +165,18 @@ export function BlogPostList({ posts }: BlogPostListProps) {
       ) : (
         <div className="rounded-xl border border-[#5F8C6B]/15 bg-[#152119]/50 p-12 text-center">
           <p className="text-[#8FA89A] mb-4">
-            No posts found for tag &quot;{activeTag}&quot;.
+            {searchQuery.trim()
+              ? `No posts found for "${searchQuery}".`
+              : `No posts found for tag "${activeTag}".`}
           </p>
           <button
-            onClick={() => setTag("")}
+            onClick={() => {
+              setTag("");
+              setSearchQuery("");
+            }}
             className="inline-flex items-center rounded-lg bg-[#5F8C6B] px-4 py-2 text-sm font-semibold text-[#E8F0E9] hover:bg-[#4a7a57] transition-colors cursor-pointer"
           >
-            Clear filter
+            Clear filters
           </button>
         </div>
       )}
