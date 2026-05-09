@@ -6,6 +6,7 @@ out
 .vscode
 *.md
 !README.md
+!content/**/*.md
 .env*
 .DS_Store
 coverage
