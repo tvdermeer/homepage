@@ -2,7 +2,7 @@
 
 **Project:** tvdermeer.nl — Thomas van der Meer Homepage  
 **Date:** 2026-05-09  
-**Status:** In Progress — Sprint 1 Complete, Sprint 2 Ready
+**Status:** In Progress — Sprint 1 & 2 Complete, Sprint 3 Ready
 
 ---
 
@@ -12,7 +12,7 @@
 **Design System:** Forest Depths (dark green/sage palette) — applied 2026-05-02  
 **Pages:** Home, Blog (listing + posts), CV  
 **Content:** 6 blog posts, static CV data  
-**Features:** tsparticles golf-ball background, staggered animations, responsive layout, tag-based post filtering (client-side), reading time, golf-themed reading progress, SEO metadata, sitemap, robots.txt, llms.txt, JSON-LD structured data, full test suite
+**Features:** tsparticles golf-ball background, staggered animations, responsive layout, tag-based post filtering (client-side), reading time, golf-themed reading progress, blog search, related posts, back-to-top button, contact page with Formspree form, CV PDF download, SEO metadata, sitemap, robots.txt, llms.txt, JSON-LD structured data, full test suite
 
 ### What's Working Well
 - Cohesive design system with strong visual identity
@@ -25,9 +25,7 @@
 ### Gaps & Opportunities
 - Homepage is thin (only hero + 2 passion cards)
 - No project/work showcase despite senior engineering background
-- Blog has no search or related posts
-- CV is static HTML with hardcoded data
-- No contact/engagement mechanism
+- Missing table of contents on blog posts
 - Missing analytics, RSS, OpenGraph images
 - No dark/light mode toggle (locked to dark)
 
@@ -55,6 +53,7 @@
 | B6. RSS Feed | Generate RSS/Atom feed for blog posts | Low — for subscribers |
 | B7. OpenGraph Images | Dynamic OG image generation for blog posts | Medium — social sharing |
 | B8. Golf-Themed Reading Progress | Scroll-based progress indicator with a golf ball rolling toward a flag/pin at the top of blog posts | Medium — brand personality & UX |
+| B9. Back to Top Button | Fixed button on blog posts that appears after scrolling, smooth scrolls to top | Low — convenience & polish |
 
 ### Area C — CV / Professional Presence
 | Feature | Description | Impact |
@@ -192,69 +191,45 @@ Phase 3 (Polish & Growth):
 **Type:** UI/UX Polish  
 **Description:** Complete migration to Forest Depths color palette across all pages and components.
 
+#### ~~WI-4: Create Contact Page (D1)~~ ✅ DONE 2026-05-09
+**Commit:** `23aee05`  
+**Type:** Functional Feature  
+**Description:** New `/contact` page with Formspree form integration. Email stays hidden on Formspree servers — never exposed in source code. Includes honeypot spam protection.
+
+#### ~~WI-5: Generate Downloadable CV PDF (C2)~~ ✅ DONE 2026-05-09
+**Commit:** `23aee05`  
+**Type:** Functional Feature  
+**Description:** "Download CV as PDF" button on /cv page using html2pdf.js for client-side generation. Also added `@media print` CSS styles.
+
+#### ~~WI-6: Add Blog Search (B2)~~ ✅ DONE 2026-05-09
+**Commit:** `a9933b6`  
+**Type:** Functional Feature  
+**Description:** Real-time search input on blog page filtering posts by title, description, and tags. Case-insensitive with clear button. Integrates with existing tag filtering.
+
+#### ~~Back to Top Button~~ ✅ DONE 2026-05-09
+**Commit:** `a9933b6`  
+**Type:** UI/UX Polish  
+**Description:** Fixed button on blog post detail pages. Appears after scrolling 500px, smooth scrolls to top on click. Forest Depths styling.
+
+#### ~~WI-9: Externalize CV Data (C1)~~ ✅ DONE 2026-05-09
+**Commit:** `72c334b`  
+**Type:** Infrastructure  
+**Description:** Moved CV experiences, education, and skills from `cv/page.tsx` into `src/data/cv.json` with TypeScript types in `src/data/cv.ts`. Zero visual regression.
+
+#### ~~WI-7: Add Related Posts to Blog Detail (B4)~~ ✅ DONE 2026-05-09
+**Commit:** `72c334b`  
+**Type:** Functional Feature  
+**Description:** Shows 2 related posts at bottom of each blog post based on shared tag overlap. Excludes current post, uses PostCard component.
+
 ---
 
 ### 🔴 High Priority (Remaining)
 
-#### WI-4: Create Contact Page (D1)
-**Type:** Functional Feature  
-**Effort:** Medium (3–4 hrs)  
-**Status:** NOT STARTED  
-**Description:** New `/contact` page with email, LinkedIn, GitHub links plus a working contact form. Use a simple form backend (Formspree, Resend, or Netlify Forms).  
-**Acceptance Criteria:**
-- [ ] New page accessible at `/contact`
-- [ ] Form fields: Name, Email, Message
-- [ ] Form submits successfully and shows success/error states
-- [ ] Added to siteConfig.nav
-- [ ] Spam protection (honeypot or basic)
-
-#### WI-5: Generate Downloadable CV PDF (C2)
-**Type:** Functional Feature  
-**Effort:** Small-Medium (2–3 hrs)  
-**Status:** NOT STARTED  
-**Description:** Add "Download CV as PDF" button on /cv page. Either generate dynamically (e.g., via CSS print styles + puppeteer/playwright) or link to a manually maintained PDF.  
-**Acceptance Criteria:**
-- [ ] Button present on CV page
-- [ ] PDF renders with correct styling matching site
-- [ ] Works on mobile and desktop
+None — all high priority items complete.
 
 ---
 
-### 🟡 Medium Priority
-
-#### WI-6: Add Blog Search (B2)
-**Type:** Functional Feature  
-**Effort:** Medium (3–4 hrs)  
-**Status:** NOT STARTED  
-**Description:** Search input on blog page filtering posts by title, description, and tags. Client-side only (no backend needed).  
-**Acceptance Criteria:**
-- [ ] Search input visible on /blog
-- [ ] Real-time filtering as user types
-- [ ] "No results" state when nothing matches
-- [ ] Case-insensitive matching
-- [ ] Debounced input (optional)
-
-#### WI-7: Add Related Posts to Blog Detail (B4)
-**Type:** Functional Feature  
-**Effort:** Small (1–2 hrs)  
-**Status:** NOT STARTED  
-**Description:** At bottom of each blog post, show 2 related posts determined by shared tags.  
-**Acceptance Criteria:**
-- [ ] Shows 2 related posts (or fewer if not enough matches)
-- [ ] Excludes the current post
-- [ ] Prioritizes posts with most tag overlap
-- [ ] Uses PostCard component for consistency
-
-#### WI-9: Externalize CV Data (C1)
-**Type:** Infrastructure  
-**Effort:** Small (1–2 hrs)  
-**Status:** NOT STARTED  
-**Description:** Move experiences, education, and skills arrays from `cv/page.tsx` into a separate JSON/YAML file or config module.  
-**Acceptance Criteria:**
-- [ ] CV data lives in `src/data/cv.json` or similar
-- [ ] TypeScript types defined for CV data structure
-- [ ] Page imports and renders from data file
-- [ ] No visual regression
+### 🟡 Medium Priority (Remaining)
 
 #### WI-10: Add Auto-Generated Table of Contents (B5)
 **Type:** UI/UX Polish  
@@ -355,17 +330,17 @@ Phase 3 (Polish & Growth):
 3. **~~WI-12~~** — 404 Enhancement (polish) ✅
 4. **~~WI-18~~** — Golf-Themed Reading Progress (brand signature, fun) ✅
 
-### Sprint 2: Core Value (Current)
-5. **WI-4** — Contact Page (enables inbound)
-6. **WI-5** — Download CV PDF (standard professional need)
-7. **WI-9** — Externalize CV Data (enables future features)
-8. **WI-6** — Blog Search (content discovery at scale)
+### Sprint 2: Core Value ✅ COMPLETE
+5. **~~WI-4~~** — Contact Page (enables inbound) ✅
+6. **~~WI-5~~** — Download CV PDF (standard professional need) ✅
+7. **~~WI-9~~** — Externalize CV Data (enables future features) ✅
+8. **~~WI-6~~** — Blog Search (content discovery at scale) ✅
 
-### Sprint 3: Discovery & Polish
-9. **WI-7** — Related Posts (engagement)
+### Sprint 3: Discovery & Polish (Current)
+9. **~~WI-7~~** — Related Posts (engagement) ✅
 10. **WI-10** — Table of Contents (readability)
 11. **WI-11** — Scroll Reveals (polish)
-12. **WI-16** — ~~Sitemap~~ (already done in LLM optimization)
+12. **~~WI-16~~** — ~~Sitemap~~ (already done in LLM optimization) ✅
 
 ### Sprint 4: Growth & Infrastructure
 13. **WI-13** — RSS Feed
@@ -381,7 +356,7 @@ Phase 3 (Polish & Growth):
 
 ## 7. Open Questions
 
-- [ ] Preferred contact form backend? (Formspree free tier, Resend, Netlify Forms, self-hosted?)
+- [x] ~~Preferred contact form backend?~~ **Decided:** Formspree free tier (implemented)
 - [ ] Do you want the golf stats widget (A5) to pull from an API (e.g., GHIN) or be manually updated?
 - [ ] Should the newsletter (D2) be included in this plan or deferred?
 - [ ] Do you have a preferred analytics provider?
