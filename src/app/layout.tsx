@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { siteConfig } from "@/config/site";
-import { GolfBallBackground } from "@/components/backgrounds/golf-ball-background";
+import { GolfBallBackgroundDynamic } from "@/components/backgrounds/golf-ball-background-dynamic";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -67,7 +67,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <GolfBallBackground />
+        <GolfBallBackgroundDynamic />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

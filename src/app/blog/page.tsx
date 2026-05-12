@@ -3,11 +3,11 @@ import { posts } from "#site/content";
 import { PostCard } from "@/components/blog/post-card";
 import { BlogPostList } from "./blog-post-list";
 
-function BlogPostListFallback({
-  posts: fallbackPosts,
-}: {
+interface BlogPostListFallbackProps {
   posts: typeof posts;
-}) {
+}
+
+function BlogPostListFallback({ posts: fallbackPosts }: BlogPostListFallbackProps) {
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {fallbackPosts.map((post, index) => (
