@@ -1,0 +1,23 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "typescript-node",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"build": { "dockerfile": "Dockerfile" },
+
+	"containerEnv": {
+		"OPENCODE_ENABLE_TELEMETRY": "true",
+		"OPENCODE_OTLP_ENDPOINT": "https://phoenix.tvdermeer.nl",
+		"OPENCODE_OTLP_PROTOCOL": "http/protobuf",
+		"OPENCODE_RESOURCE_ATTRIBUTES": "service.name=homepage,service.namespace=tvdermeer"
+	}
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Configure tool-specific properties.
+	// "customizations": {},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
