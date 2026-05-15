@@ -6,6 +6,7 @@ RUN npm install -g opencode-ai \
     && npm install -g typescript-language-server vscode-langservers-extracted \
     && npm install -g @code-yeongyu/comment-checker \
     && npm install -g @devtheops/opencode-plugin-otel \
+    && npm install -g @arizeai/phoenix-cli \
     && ln -sf /usr/local/share/npm-global/lib/node_modules/@code-yeongyu/comment-checker/bin/comment-checker /usr/local/share/npm-global/bin/comment-checker
 
 RUN npx -y oh-my-opencode install --no-tui --claude=no --openai=no --gemini=no --copilot=no --opencode-zen=no --zai-coding-plan=no --opencode-go=yes --kimi-for-coding=no --vercel-ai-gateway=no

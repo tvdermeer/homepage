@@ -15,5 +15,5 @@ export const siteConfig = {
     { label: "CV", href: "/cv" },
     { label: "Contact", href: "/contact" },
   ],
-  formspreeId: "YOUR_FORMSPREE_ID",
+  formspreeId: "mpqbnajp",
 };

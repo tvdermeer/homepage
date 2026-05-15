@@ -5,6 +5,8 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"build": { "dockerfile": "Dockerfile" },
 
+	"runArgs": ["--env-file", "${localWorkspaceFolder}/.devcontainer/.env"],
+
 	"containerEnv": {
 		"OPENCODE_ENABLE_TELEMETRY": "true",
 		"OPENCODE_OTLP_ENDPOINT": "https://phoenix.tvdermeer.nl",

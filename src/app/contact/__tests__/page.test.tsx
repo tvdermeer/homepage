@@ -1,9 +1,25 @@
-import { render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import ContactPage from "@/app/contact/page";
 import { siteConfig } from "@/config/site";
 
+const mockHandleSubmit = vi.fn();
+let mockFormState = { submitting: false, succeeded: false, errors: [] };
+
+vi.mock("@formspree/react", () => ({
+  useForm: vi.fn(() => [mockFormState, mockHandleSubmit]),
+  ValidationError: ({ errors, className }: { errors?: unknown; className?: string }) => {
+    if (!errors || (Array.isArray(errors) && errors.length === 0)) return null;
+    return <div className={className}>Error</div>;
+  },
+}));
+
 describe("contact-page", () => {
+  beforeEach(() => {
+    mockFormState = { submitting: false, succeeded: false, errors: [] };
+    mockHandleSubmit.mockClear();
+  });
+
   it("renders contact heading", () => {
     render(<ContactPage />);
     expect(screen.getByRole("heading", { name: "Contact" })).toBeInTheDocument();
@@ -21,21 +37,6 @@ describe("contact-page", () => {
     expect(screen.getByLabelText("Name")).toBeInTheDocument();
     expect(screen.getByLabelText("Email")).toBeInTheDocument();
     expect(screen.getByLabelText("Message")).toBeInTheDocument();
-  });
-
-  it("form has correct action pointing to formspree", () => {
-    render(<ContactPage />);
-    const form = document.querySelector("form");
-    expect(form).toHaveAttribute(
-      "action",
-      `https://formspree.io/f/${siteConfig.formspreeId}`
-    );
-  });
-
-  it("form uses POST method", () => {
-    render(<ContactPage />);
-    const form = document.querySelector("form");
-    expect(form).toHaveAttribute("method", "POST");
   });
 
   it("includes honeypot field for spam protection", () => {
@@ -72,5 +73,31 @@ describe("contact-page", () => {
     expect(screen.getByLabelText("Name")).toHaveAttribute("required");
     expect(screen.getByLabelText("Email")).toHaveAttribute("required");
     expect(screen.getByLabelText("Message")).toHaveAttribute("required");
+  });
+
+  it("calls handleSubmit when form is submitted", () => {
+    render(<ContactPage />);
+    const form = screen.getByRole("form", { name: "Contact form" });
+    fireEvent.submit(form);
+    expect(mockHandleSubmit).toHaveBeenCalled();
+  });
+});
+
+describe("contact-form submitting state", () => {
+  it("shows sending text when submitting", () => {
+    mockFormState = { submitting: true, succeeded: false, errors: [] };
+
+    render(<ContactPage />);
+    expect(screen.getByRole("button", { name: "Sending..." })).toBeInTheDocument();
+  });
+});
+
+describe("contact-form success state", () => {
+  it("shows success message after submission", () => {
+    mockFormState = { submitting: false, succeeded: true, errors: [] };
+
+    render(<ContactPage />);
+    expect(screen.getByText("Thanks for reaching out!")).toBeInTheDocument();
+    expect(screen.getByText(/I'll get back to you as soon as I can./)).toBeInTheDocument();
   });
 });
