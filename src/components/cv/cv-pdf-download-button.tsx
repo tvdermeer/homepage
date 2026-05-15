@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback } from "react";
+import { resolveModernColors } from "@/lib/resolve-modern-colors";
 
 export function CVPdfDownloadButton() {
   const handleDownload = useCallback(async () => {
@@ -17,6 +18,9 @@ export function CVPdfDownloadButton() {
         scale: 2,
         useCORS: true,
         backgroundColor: "#0D1610",
+        onclone: (clonedDoc: Document) => {
+          resolveModernColors(clonedDoc);
+        },
       },
       jsPDF: {
         unit: "mm" as const,

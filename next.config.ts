@@ -6,15 +6,6 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  turbopack: {
-    resolveAlias: {
-      'html2canvas': 'html2canvas-pro',
-    },
-  },
-  webpack: (config) => {
-    config.resolve.alias.html2canvas = 'html2canvas-pro';
-    return config;
-  },
 };
 
 export default nextConfig;
